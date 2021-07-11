@@ -35,7 +35,7 @@ const SnippetInput = ({ visible, onClose, categoryId }) => {
       onClose()
     } catch (error) {
       Alert.alert(
-        'Atenção',
+        'Warning',
         error.message
       )
     }
@@ -58,7 +58,7 @@ const SnippetInput = ({ visible, onClose, categoryId }) => {
               value={code}
               onChangeText={setCode}
               multiline
-              placeholder="Código"
+              placeholder="Code"
               placeholderTextColor={Colors.foregroundAlpha}
             />
           </View>
@@ -68,7 +68,7 @@ const SnippetInput = ({ visible, onClose, categoryId }) => {
               value={description}
               multiline
               onChangeText={setDescription}
-              placeholder="Descrição"
+              placeholder="Description"
               placeholderTextColor={Colors.foregroundAlpha}
             />
           </View>

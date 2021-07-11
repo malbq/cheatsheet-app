@@ -28,7 +28,7 @@ export default function CategoryItem({ visible, onClose }) {
       onClose()
     } catch (error) {
       Alert.alert(
-        'Atenção',
+        'Warning',
         error.message
       )
     }
