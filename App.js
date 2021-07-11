@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { View } from 'react-native'
+import { useFonts } from 'expo-font'
+import AppLoading from 'expo-app-loading'
+import { NavigationContainer } from '@react-navigation/native'
+import { enableScreens } from 'react-native-screens'
+import { Provider } from 'react-redux'
+import CheatSheetNavigator from './navigation/CheatSheetNavigator'
+import store from './store'
+
+enableScreens()
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [fontLoaded] = useFonts({
+    hack: require('./assets/fonts/Hack-Regular.ttf'),
+    'hack-bold': require('./assets/fonts/Hack-Bold.ttf'),
+    'hack-italic': require('./assets/fonts/Hack-Italic.ttf'),
+    'hack-bold-italic': require('./assets/fonts/Hack-BoldItalic.ttf'),
+  })
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  if (!fontLoaded) {
+    return (
+      <AppLoading />
+    )
+  }
+
+  return (
+    <Provider store={store}>
+      <NavigationContainer>
+        <CheatSheetNavigator />
+      </NavigationContainer>
+    </Provider>
+  )
+}
